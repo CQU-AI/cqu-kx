@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Markup
 
 from cqu_kx.__main__ import server_main
 
@@ -9,7 +9,6 @@ app = Flask(__name__)
 def get_ical(username, password):
     table = server_main(username, password)
     table = table.replace("<th>", "<th><h1>").replace("</th>", "</h1></th>").replace('border="1"', "")
-
     return render_template('template.html', username=username, table=table)
 
 

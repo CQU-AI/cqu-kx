@@ -33,7 +33,7 @@ def server_main(username, password):
 
     course = get_course(student)
     quota_table = get_quota(student, course)
-    return pd.DataFrame(quota_table).to_html()
+    return pd.DataFrame(quota_table, columns=["课程名称", "授课教师", "可选人数"]).to_html(index=None)
 
 
 def console_main():
