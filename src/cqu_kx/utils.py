@@ -13,6 +13,19 @@ from cqu_kx.version import __version__
 ERROR_COUNT = 0
 
 
+def check_output_path():
+    if config['output']['path'] is None:
+        flag = False
+        for i in ["Desktop", "桌面", "desktop"]:
+            if (Path.home() / i).is_dir():
+                flag = True
+                break
+        if flag:
+            config['output']['path'] = Path.home() / i / "课程可选人数.csv"
+        else:
+            config['output']['path'] = Path("./课程可选人数.csv").absolute()
+
+
 def exit():
     print("[{}]  遭遇不可抗的错误，程序完全退出".format(datetime.now()))
     sys.exit(1)
@@ -40,8 +53,8 @@ def reset_error_count():
 
 def check_user():
     if (
-        config["user_info"]["username"] is None
-        or config["user_info"]["password"] is None
+            config["user_info"]["username"] is None
+            or config["user_info"]["password"] is None
     ):
         print("未找到有效的帐号和密码，请输入你的帐号和密码，它们将被保存在你的电脑上以备下次使用")
         try:
