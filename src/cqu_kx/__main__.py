@@ -1,6 +1,6 @@
-from [PROJECT NAME].config.config import config, Config
-from [PROJECT NAME].utils import check_user, log, check_output_path
-from [PROJECT NAME].version import __version__
+from cqu_kx.config.config import config, Config
+from cqu_kx.utils import check_user, log
+from cqu_kx.version import __version__
 
 
 def main():
@@ -15,7 +15,10 @@ def console_main():
 
         :return: Namespace with parsed arguments.
         """
-        parser = argparse.ArgumentParser(prog="jwc", description="第三方 重庆大学 成绩查询", )
+        parser = argparse.ArgumentParser(
+            prog="jwc",
+            description="第三方 重庆大学 成绩查询",
+        )
 
         parser.add_argument(
             "-v",
@@ -31,7 +34,10 @@ def console_main():
             action="store_true",
         )
         parser.add_argument(
-            "-r", "--reset", help="重置配置项", action="store_true",
+            "-r",
+            "--reset",
+            help="重置配置项",
+            action="store_true",
         )
         parser.add_argument(
             "-u",
@@ -52,7 +58,7 @@ def console_main():
             "--output",
             help="成绩输出路径",
             type=str,
-            default=config['output']['path'],
+            default=config["output"]["path"],
         )
 
         return parser.parse_args()
@@ -70,5 +76,5 @@ def console_main():
     main()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

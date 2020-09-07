@@ -13,7 +13,7 @@ with (source_root / "README.md").open(encoding="utf-8") as f:
 with (source_root / "requirements.txt").open(encoding="utf8") as f:
     requirements = f.readlines()
 
-with (source_root / "src" / "[PROJECT NAME]" / "version.py").open(
+with (source_root / "src" / "cqu-kx" / "version.py").open(
         "w", encoding="utf-8"
 ) as f:
     f.writelines(
@@ -25,12 +25,12 @@ with (source_root / "src" / "[PROJECT NAME]" / "version.py").open(
     )
 
 setup(
-    name="[PROJECT NAME]",
+    name="cqu-kx",
     version=version,
     description="~",
     author="CQU-AI",
     author_email="peter@mail.loopy.tech",
-    url="https://github.com/CQU-AI/[PROJECT NAME]",
+    url="https://github.com/CQU-AI/cqu-kx",
     license="GPL License",
     packages=find_packages("src"),
     package_dir={"": "src"},
