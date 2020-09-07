@@ -27,6 +27,15 @@ def main():
         write_table(quota_table)
 
 
+def server_main(username, password):
+    import pandas as pd
+    student = Student(username, password)
+
+    course = get_course(student)
+    quota_table = get_quota(student, course)
+    return pd.DataFrame(quota_table).to_html()
+
+
 def console_main():
     import argparse
 
